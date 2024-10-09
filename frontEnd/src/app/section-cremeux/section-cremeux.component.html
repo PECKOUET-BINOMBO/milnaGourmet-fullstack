@@ -1,0 +1,73 @@
+<section id="cremeux" class="gourmet-section">
+  <div class="h-full px-4">
+    <!-- En-tête de la section -->
+    <div class="text-center">
+      <h1
+        id="gourments-crémeux"
+        class="font-bold principal highlight-text highlight-section"
+      >
+        Gourments Crémeux
+      </h1>
+      <p class="text-gray-700 mb-5">
+        Savourez la douceur de nos yaourts crémeux, disponibles en plusieurs
+        variétés pour satisfaire toutes vos envies. Une texture onctueuse et des
+        saveurs authentiques pour un pur moment de délice.
+      </p>
+    </div>
+
+    <!-- Grille de produits -->
+    <div
+      class="box grid sm:grid-cols-1 sm:gap-1 sm:grid-rows-3 md:grid-cols-2 md:gap-2 md:grid-rows-2 lg:grid-cols-3 gap-4 grid-rows-1 justify-center justify-items-center"
+    >
+      <!-- Boucle sur chaque produit -->
+      <div
+        *ngFor="let produit of produits"
+        class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow service"
+        [attr.data-produit-id]="produit.id"
+      >
+        <!-- Image du produit -->
+        <div class="service-image">
+          <img
+            [ngSrc]="produit.imageUrl"
+            width="300"
+            height="200"
+            alt="{{ produit.nom }}"
+          />
+        </div>
+        <!-- Détails du produit -->
+        <div class="px-5 pb-5">
+          <h2 class="mt-2 text-gray-900 titre-produit">
+            {{ produit.nom }} :
+            <span class="text-gray-500">{{ produit.description }}</span>
+          </h2>
+          <!-- Affichage du prix -->
+          <div class="flex items-center mt-2.5 mb-5">
+            <span class="prix-produit text-gray-700"
+              >{{ produit.prix }} FCFA</span
+            >
+          </div>
+          <!-- Sélection de la quantité et bouton d'ajout -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between">
+              <select
+              [(ngModel)]="produit.quantite" (change)="changerQuantite(produit, produit.quantite)"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option disabled>Quantité</option>
+                <option *ngFor="let q of quantiteOptions" [value]="q">{{ q }}</option>
+              </select>
+            </div>
+            <!-- Bouton d'ajout au panier avec ID du produit -->
+            <button
+              (click)="ajouterAuPanier(produit)"
+              class="btn-produit text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center btn"
+              [attr.data-produit-id]="produit.id"
+            >
+              Ajouter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

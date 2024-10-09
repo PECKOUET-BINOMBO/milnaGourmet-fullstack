@@ -1,0 +1,16 @@
+<app-navbar (deconnexionReussie)="onDeconnexionReussie()"></app-navbar>
+<app-header></app-header>
+<app-section-cremeux></app-section-cremeux>
+<app-section-liquide></app-section-liquide>
+<app-section-creation></app-section-creation>
+<app-contact></app-contact>
+<app-footer></app-footer>
+
+<app-message-panier
+  *ngIf="(afficherMessage$ | async) === true"
+  [produitNom]="(produitAjoute$ | async) || ''"
+></app-message-panier>
+
+<app-message-deconnexion *ngIf="afficherMessageDeconnexion$ | async"></app-message-deconnexion>
+
+<!-- <app-message-update></app-message-update> -->

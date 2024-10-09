@@ -1,0 +1,107 @@
+<nav class="navbar">
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img ngSrc="images/logo2.png" width="100" height="59.5" alt="My Logo" />
+    </a>
+    <div
+      class="relative flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+    >
+      <!-- Panier -->
+      <app-panier></app-panier>
+
+      <!-- Bouton du menu pour mobile -->
+      <button
+        data-collapse-toggle="navbar-sticky"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-sticky"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+      id="navbar-sticky"
+    >
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"
+      >
+        <li>
+          <a
+            routerLink="/"
+            class="cursor-pointer principal block py-2 px-3 md:bg-transparent md:p-0"
+            aria-current="page"
+            >Accueil</a
+          >
+        </li>
+        <li>
+          <span
+            (click)="scrollToElement('cremeux')"
+            class="cursor-pointer principal block py-2 px-3 md:p-0"
+            >Crémeux</span
+          >
+        </li>
+        <li>
+          <span
+            (click)="scrollToElement('liquide')"
+            class="cursor-pointer principal block py-2 px-3 md:p-0"
+            >Liquides</span
+          >
+        </li>
+        <li>
+          <span
+            (click)="scrollToElement('creation')"
+            class="cursor-pointer principal block py-2 px-3 md:p-0"
+            >Créations</span
+          >
+        </li>
+        <li>
+          <span
+            (click)="scrollToElement('contact')"
+            class="cursor-pointer principal block py-2 px-3 md:p-0"
+            >Contacts</span
+          >
+        </li>
+
+        <li>
+          <div class="relative">
+            <button (click)="toggleDropdown()" class="principal flex items-start">
+              <span *ngIf="isLoggedIn">
+                {{ (currentUser$ | async)?.displayName || "" }}
+              </span>
+              <img class="w-5 h-5 rounded-full" [src]="iconCompte" alt="user photo">
+            </button>
+            <div *ngIf="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <ng-container *ngIf="isLoggedIn; else notLoggedIn">
+                <a class="cursor-pointer principal block py-2 px-3 hover:bg-gray-100" routerLink="/compte">Mon compte</a>
+                <a class="cursor-pointer principal block py-2 px-3 hover:bg-gray-100" (click)="logout()">Se déconnecter</a>
+              </ng-container>
+              <ng-template #notLoggedIn>
+                <a class="cursor-pointer principal block py-2 px-3 hover:bg-gray-100" routerLink="/inscription">S'inscrire</a>
+                <a class="cursor-pointer principal block py-2 px-3 hover:bg-gray-100" routerLink="/connexion">Se connecter</a>
+              </ng-template>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

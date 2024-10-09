@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MilnaGourmet</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+
+    <button
+      id="scrollUpBtn"
+      class="scroll-up-btn rounded-full px-2 py-1"
+      aria-label="Retourner en haut de la page"
+    >
+      <i class="fa-solid fa-arrow-up-long"></i>
+    </button>
+
+    <script>
+      // Constantes pour les sélecteurs fréquemment utilisés
+      const SELECTORS = {
+        scrollUpBtn: "#scrollUpBtn",
+        cartButton: "#cartButton",
+        cartDropdown: "#cartDropdown",
+      };
+
+      // Fonction pour basculer l'affichage d'un élément
+      function toggleElement(element, show) {
+        if (element) {
+          element.classList.toggle("hidden", !show);
+        }
+      }
+
+      // Configuration du dropdown utilisateur et du modal compte
+      function setupUserInteractions() {
+        const userIcon = document.querySelector(SELECTORS.userIcon);
+        const userDropdown = document.querySelector(SELECTORS.userDropdown);
+        const compteLink = document.querySelector(SELECTORS.compteLink);
+        const modalCompte = document.querySelector(SELECTORS.modalCompte);
+        const closeModalBtn = document.querySelector(SELECTORS.closeModalBtn);
+
+        if (userIcon && userDropdown) {
+          userIcon.addEventListener("click", (event) => {
+            event.stopPropagation();
+            toggleElement(userDropdown, true);
+          });
+
+          document.addEventListener("click", (event) => {
+            if (
+              !userIcon.contains(event.target) &&
+              !userDropdown.contains(event.target)
+            ) {
+              toggleElement(userDropdown, false);
+            }
+          });
+        }
+
+        if (compteLink && modalCompte) {
+          compteLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            toggleElement(modalCompte, true);
+          });
+
+          // Fermer le modal quand on clique sur la croix
+          if (closeModalBtn) {
+            closeModalBtn.addEventListener("click", () => {
+              toggleElement(modalCompte, false);
+            });
+          }
+
+          // Fermer le modal quand on clique en dehors
+          document.addEventListener("click", (event) => {
+            if (modalCompte.classList.contains("hidden")) return;
+            if (
+              !modalCompte.contains(event.target) &&
+              event.target !== compteLink
+            ) {
+              toggleElement(modalCompte, false);
+            }
+          });
+
+          // Empêcher la fermeture du modal quand on clique à l'intérieur
+          modalCompte.addEventListener("click", (event) => {
+            event.stopPropagation();
+          });
+        }
+      }
+
+      // Configuration du dropdown du panier
+      function setupCartDropdown() {
+        const cartButton = document.querySelector(SELECTORS.cartButton);
+        const cartDropdown = document.querySelector(SELECTORS.cartDropdown);
+
+        if (cartButton && cartDropdown) {
+          cartButton.addEventListener("click", () =>
+            toggleElement(cartDropdown, true)
+          );
+
+          document.addEventListener("click", (event) => {
+            if (
+              !cartButton.contains(event.target) &&
+              !cartDropdown.contains(event.target)
+            ) {
+              toggleElement(cartDropdown, false);
+            }
+          });
+        }
+      }
+
+      // Fonction d'initialisation principale
+      function initializeApp() {
+        setupUserInteractions();
+        setupCartDropdown();
+
+        const scrollUpBtn = document.querySelector(SELECTORS.scrollUpBtn);
+        if (scrollUpBtn) {
+          scrollUpBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+
+        window.addEventListener("scroll", () => {
+          const scrollUpBtn = document.querySelector(SELECTORS.scrollUpBtn);
+          if (scrollUpBtn) {
+            scrollUpBtn.style.display = window.scrollY > 20 ? "block" : "none";
+          }
+        });
+      }
+
+      // Exécuter l'initialisation lorsque le DOM est chargé
+      document.addEventListener("DOMContentLoaded", initializeApp);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  </body>
+</html>

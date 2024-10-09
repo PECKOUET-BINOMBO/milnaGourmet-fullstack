@@ -1,0 +1,44 @@
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #06c1ca;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  margin-right: 0.5rem;
+  background-color: transparent; /* Supprime la couleur de fond par défaut */
+}
+
+input[type="radio"]:checked::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #06c1ca;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+input[type="radio"]:focus {
+  box-shadow: 0 0 0 2px rgba(6, 193, 202, 0.2); /* Ajoute un focus visible */
+}
+
+.btn {
+
+  background-color: #06c1ca;
+
+}
+.btn:hover {
+  background-color: #2fcbd0;
+}

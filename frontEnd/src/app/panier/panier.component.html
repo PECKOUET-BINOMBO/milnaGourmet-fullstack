@@ -1,0 +1,75 @@
+<!--Panier-->
+<button
+  type="button"
+  id="cartButton"
+  class="btn-navbar focus:ring-offset-0 focus:outline-none focus:ring-0 font-medium rounded-lg text-sm px-4 py-2 text-center shadow-lg sm:px-3 sm:py-1.5 sm:text-xs md:px-4 md:py-2 md:text-sm lg:px-5 lg:py-2.5 lg:text-base"
+>
+  <i class="fa-solid fa-bag-shopping"></i>
+  <span class="ms-1 text-xs">{{ nombreTotalProduits }}</span>
+</button>
+
+<!-- Dropdown pour les produits du panier -->
+<div
+  id="cartDropdown"
+  class="absolute right-0 top-6 z-10 mt-2 w-64 bg-white rounded-md shadow-lg hidden"
+>
+  <div class="p-4">
+    <h3 class="text-md text-center font-medium mb-5 border-b-2 principal">
+      Gourmets choisis
+    </h3>
+    <div class="panier">
+      <ng-container *ngFor="let type of types">
+        <ng-container *ngIf="getElementsParType(type).length > 0">
+        <h4 class="font-medium mt-2 mb-2 principal">{{ type | titlecase }}</h4>
+        <ng-container *ngFor="let element of getElementsParType(type)">
+          <div class="flex justify-between items-center">
+            {{ element.nom }} {{ element.prix * element.quantite }} FCFA
+          </div>
+          <div
+            class="flex justify-between items-center mt-1 border-b-2 pb-2 mb-2"
+          >
+            <div class="flex items-center">
+              <button (click)="diminuerQuantite(element)" class="px-1">
+                -
+              </button>
+              <span class="px-2 py-1 bg-gray-100">{{ element.quantite }}</span>
+              <button (click)="augmenterQuantite(element)" class="px-1">
+                +
+              </button>
+            </div>
+            <button
+              (click)="retirerElement(element)"
+              class="text-sm text-red-500"
+            >
+              Supprimer
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    </div>
+
+    <div class="mt-4 pt-2">
+      <p class="font-medium text-sm">
+        Total: <span id="cartTotal">{{ total }} FCFA</span>
+      </p>
+    </div>
+
+    <div (click)="validerCommande()" class="mt-5 text-center highlight-button">
+      <button *ngIf="!panierEstVide"
+        class="py-2 btn-panier px-3 text-sm rounded-md transition duration-300 font-medium"
+      >
+        Valider la commande
+      </button>
+    </div>
+    <ng-container *ngIf="panierEstVide">
+      <div class="mt-5">
+        <span
+          class="cursor-not-allowed py-2 btn-panier px-3 text-sm rounded-md transition duration-300 font-medium"
+        >
+          Panier vide
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</div>

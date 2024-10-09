@@ -1,0 +1,65 @@
+<section id="creation" class="gourmet-section">
+  <div class="h-full px-4">
+    <div class="text-center">
+      <h1 id="gourments-créations" class="font-bold principal highlight-text highlight-section">Gourments Créations</h1>
+      <p>Laissez libre cours à votre créativité avec notre concept unique de yaourts personnalisables. Choisissez votre base, vos fruits et vos toppings pour une expérience sur mesure qui ravira vos papilles.</p>
+    </div>
+
+    <div class="box flex items-center justify-center w-full">
+      <div class="shadow flex justify-between flex-wrap mt-5 p-5 rounded-lg bg-white">
+        <!-- Sélection de la taille -->
+        <div class="w-full md:w-1/3 mb-5">
+          <h2 class="text-lg font-medium text-gray-500 mb-3">Choisissez votre taille</h2>
+          <select [(ngModel)]="selectedSize" (ngModelChange)="onSizeChange()" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+            <option [ngValue]="null">Sélectionnez une taille</option>
+            <option *ngFor="let size of sizes" [ngValue]="size">{{ size.nom }} - {{ size.prix }} FCFA ({{ size.description }})</option>
+
+          </select>
+        </div>
+
+        <!-- Sélection des fruits -->
+        <div class="w-full md:w-1/3 mb-5">
+          <h2 class="text-lg font-medium text-gray-500 mb-3">Choisissez vos fruits ({{ selectedFruits.length }}/{{ selectedSize?.maxFruits || 0 }})</h2>
+          <div *ngFor="let fruit of fruits">
+            <label>
+              <input type="checkbox"
+              [checked]="selectedFruits.includes(fruit)"
+              (change)="onFruitChange(fruit)"
+              [disabled]="!selectedFruits.includes(fruit) && selectedFruits.length >= (selectedSize?.maxFruits || 0)">
+       {{ fruit.nom }}
+            </label>
+          </div>
+        </div>
+
+        <!-- Sélection des sauces -->
+        <div class="w-full md:w-1/3">
+          <h2 class="text-lg font-medium text-gray-500 mb-3">Choisissez vos sauces ({{ selectedSauces.length }}/{{ selectedSize?.maxSauces || 0 }})</h2>
+          <div *ngFor="let sauce of sauces">
+            <label>
+              <input type="checkbox"
+              [checked]="selectedSauces.includes(sauce)"
+              (change)="onSauceChange(sauce)"
+              [disabled]="!selectedSauces.includes(sauce) && selectedSauces.length >= (selectedSize?.maxSauces || 0)">
+       {{ sauce.nom }}
+            </label>
+          </div>
+        </div>
+
+        <!-- Sélection de la quantité et bouton d'ajout -->
+        <div class="w-full flex items-center justify-between mt-5">
+          <div class="flex items-center me-1">
+
+            <select [(ngModel)]="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option disabled>Quantité</option>
+              <option *ngFor="let i of [1,2,3,4,5]" [value]="i">{{ i }}</option>
+            </select>
+          </div>
+          <button (click)="addToCart()" [disabled]="!isSelectionValid()" class="ms-1 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center btn" [disabled]="!isSelectionValid()">
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

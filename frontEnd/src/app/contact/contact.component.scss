@@ -1,0 +1,44 @@
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+}
+
+@media screen and (max-width: 767px){
+  .container {
+    width: auto;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+  }
+}
+
+.contact-section {
+
+  padding: 20px;
+  margin-top: 20px;
+
+}
+.contact-option {
+  margin-bottom: 20px;
+}
+.contact-option h2 {
+  color: #34aeb3;
+}
+.contact-option p {
+  margin-bottom: 10px;
+}
+.button {
+  display: inline-block;
+  background: #34aeb3;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  white-space: nowrap;
+  transition: background 0.3s ease;
+}
+.button:hover {
+  background: #34afb3ac;
+}
