@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ServicePanier, ElementPanier } from '../services/service-panier';
-import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-panier',
@@ -20,7 +19,7 @@ export class PanierComponent implements OnInit {
 
   constructor(
     private servicePanier: ServicePanier,
-    private authService: AuthService,
+
     private router: Router
   ) {}
 
@@ -63,16 +62,5 @@ export class PanierComponent implements OnInit {
     return this.elementsPanier.filter(element => element.type === type);
   }
 
-  validerCommande() {
-    this.authService.getCurrentUser().subscribe(user => {
-      if (user) {
-        // L'utilisateur est connecté, procéder à la validation de la commande
-        console.log('Commande validée');
-        // Ajoutez ici la logique pour traiter la commande
-      } else {
-        // L'utilisateur n'est pas connecté, rediriger vers la page de connexion
-        this.router.navigate(['/connexion']);
-      }
-    });
-  }
+ 
 }

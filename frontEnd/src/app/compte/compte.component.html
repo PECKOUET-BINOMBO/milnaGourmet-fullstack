@@ -1,10 +1,8 @@
 <app-navbar></app-navbar>
-
 <div class="compte-box flex items-center flex-wrap">
   <div class="mt-2 bg-white rounded-md p-5 div-compte">
     <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
+
       class="form_container relative w-full"
     >
       <div class="logo_container flex items-center justify-center">
@@ -22,52 +20,6 @@
         <span class="subtitle"
           >Modifier vos informatons ou supprimer votre compte.</span
         >
-      </div>
-
-      <div
-        *ngIf="errorMessage"
-        id="alert-2"
-        class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-        role="alert"
-      >
-        <svg
-          class="flex-shrink-0 w-4 h-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-          />
-        </svg>
-        <span class="sr-only">Info</span>
-        <div class="ms-3 text-sm font-medium">
-          {{ errorMessage }}
-        </div>
-      </div>
-
-      <div
-        *ngIf="successMessage"
-        id="alert-3"
-        class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-        role="alert"
-      >
-        <svg
-          class="flex-shrink-0 w-4 h-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-          />
-        </svg>
-        <span class="sr-only">Info</span>
-        <div class="ms-3 text-sm font-medium">
-          {{ successMessage }}
-        </div>
       </div>
 
       <div class="grid register-champ w-full mt-4">
@@ -104,20 +56,7 @@
               id="nameProfil"
             />
           </div>
-          <div
-            *ngIf="
-              form.get('name')?.invalid &&
-              (form.get('name')?.dirty || form.get('name')?.touched)
-            "
-            class="text-red-500 text-xs mt-1"
-          >
-            <p *ngIf="form.get('name')?.errors?.['required']">
-              Le nom est requis.
-            </p>
-            <p *ngIf="form.get('name')?.errors?.['minlength']">
-              Le nom doit contenir au moins 2 caractères.
-            </p>
-          </div>
+
         </div>
         <!-- Email -->
         <div class="input_container">
@@ -153,20 +92,7 @@
               id="emailProfil"
             />
           </div>
-          <div
-            *ngIf="
-              form.get('email')?.invalid &&
-              (form.get('email')?.dirty || form.get('email')?.touched)
-            "
-            class="text-red-500 text-xs mt-1"
-          >
-            <p *ngIf="form.get('email')?.errors?.['required']">
-              L'email est requis.
-            </p>
-            <p *ngIf="form.get('email')?.errors?.['email']">
-              Veuillez entrer une adresse email valide.
-            </p>
-          </div>
+
         </div>
       </div>
 
@@ -198,20 +124,7 @@
               id="telProfil"
             />
           </div>
-          <div
-            *ngIf="
-              form.get('tel')?.invalid &&
-              (form.get('tel')?.dirty || form.get('tel')?.touched)
-            "
-            class="text-red-500 text-xs mt-1"
-          >
-            <p *ngIf="form.get('tel')?.errors?.['required']">
-              Le numéro de téléphone est requis.
-            </p>
-            <p *ngIf="form.get('tel')?.errors?.['pattern']">
-              Veuillez entrer un numéro de téléphone valide au Gabon.
-            </p>
-          </div>
+
         </div>
         <!-- Adresse -->
         <div class="input_container">
@@ -247,17 +160,7 @@
               <option value="adresse3">Adresse 3</option>
             </select>
           </div>
-          <div
-            *ngIf="
-              form.get('adresse')?.invalid &&
-              (form.get('adresse')?.dirty || form.get('adresse')?.touched)
-            "
-            class="text-red-500 text-xs mt-1"
-          >
-            <p *ngIf="form.get('adresse')?.errors?.['required']">
-              L'adresse est requise.
-            </p>
-          </div>
+
         </div>
       </div>
 
@@ -302,45 +205,10 @@
             id="passwordProfil"
           />
         </div>
-        <div
-          *ngIf="
-            form.get('password')?.invalid &&
-            (form.get('password')?.dirty || form.get('password')?.touched)
-          "
-          class="text-red-500 text-xs mt-1"
-        >
-          <p *ngIf="form.get('password')?.errors?.['required']">
-            Le mot de passe est requis.
-          </p>
-          <p *ngIf="form.get('password')?.errors?.['minlength']">
-            Le mot de passe doit contenir au moins 8 caractères.
-          </p>
-        </div>
+
       </div>
 
-      <div class="input_container" *ngIf="form.get('email')?.dirty">
-        Mot de passe actuel (requis pour changer l'email)
 
-        <div class="relative box-input-form">
-          <img src="data:image/svg+xml;base64,..." class="icon" />
-          <input
-            type="password"
-            formControlName="currentPassword"
-            placeholder="Mot de passe actuel"
-          />
-        </div>
-
-        <div
-          class="text-red-500 text-xs mt-1"
-          *ngIf="
-            form.get('currentPassword')?.invalid &&
-            (form.get('currentPassword')?.dirty ||
-              form.get('currentPassword')?.touched)
-          "
-        >
-          Le mot de passe actuel est requis pour changer l'email.
-        </div>
-      </div>
       <button title="Mettre à jour" type="submit" class="sign-in_btn">
         Mettre à jour
       </button>
@@ -351,7 +219,7 @@
         <hr class="line" />
       </div>
       <button
-        (click)="onDeleteAccount()"
+
         title="S'inscrire"
         type="submit"
         class="sign-in_ggl_btn"
@@ -456,7 +324,7 @@
           <a
             href="#"
             aria-current="page"
-            class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+            class="flex items-center justify-center px-3 h-8  border border-gray-300 number"
             >3</a
           >
         </li>
