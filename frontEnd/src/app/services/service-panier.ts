@@ -46,7 +46,7 @@ export class ServicePanier {
     // Programmer la disparition du message après 5 secondes
     setTimeout(() => {
       this._afficherMessage.next(false);
-    }, 2000);
+    }, 1500);
 
   }
 

@@ -20,7 +20,6 @@ export class PanierComponent implements OnInit {
   constructor(
     private servicePanier: ServicePanier,
 
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -62,5 +61,5 @@ export class PanierComponent implements OnInit {
     return this.elementsPanier.filter(element => element.type === type);
   }
 
- 
+
 }

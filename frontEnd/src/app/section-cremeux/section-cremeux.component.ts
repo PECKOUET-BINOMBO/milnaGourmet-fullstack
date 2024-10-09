@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgOptimizedImage, NgFor, CurrencyPipe, NgIf } from '@angular/common';
+import {NgFor, CurrencyPipe, NgIf } from '@angular/common';
 import { ServicePanier } from '../services/service-panier';
 import { FormsModule } from '@angular/forms';
 import { MessagePanierComponent } from '../message-panier/message-panier.component';
@@ -19,7 +19,7 @@ interface Produit {
 @Component({
   selector: 'app-section-cremeux',
   standalone: true,
-  imports: [NgOptimizedImage, NgFor, CurrencyPipe, FormsModule, NgIf, MessagePanierComponent],
+  imports: [NgFor, CurrencyPipe, FormsModule, NgIf, MessagePanierComponent],
   templateUrl: './section-cremeux.component.html',
   styleUrl: './section-cremeux.component.scss'
 })

@@ -7,7 +7,7 @@
     >
       <div class="logo_container flex items-center justify-center">
         <img
-          [ngSrc]="logoUrl"
+          [src]="logoUrl"
           alt="Logo Milna Gourmet"
           width="100"
           height="100"
@@ -50,7 +50,7 @@
             </svg>
             <input
               title="Votre nom"
-              formControlName="name"
+              name="name"
               type="text"
               class="input_field"
               id="nameProfil"
@@ -86,7 +86,7 @@
             </svg>
             <input
               title="Votre e-mail"
-              formControlName="email"
+              name="email"
               type="email"
               class="input_field"
               id="emailProfil"
@@ -118,7 +118,7 @@
             </svg>
             <input
               title="Numéro WhatsApp"
-              formControlName="tel"
+              name="tel"
               type="tel"
               class="input_field"
               id="telProfil"
@@ -150,7 +150,7 @@
               <circle cx="12" cy="10" r="3" />
             </svg>
             <select
-              formControlName="adresse"
+              name="adresse"
               id="adresseProfil"
               class="input_field"
             >
@@ -199,7 +199,7 @@
           <input
             placeholder="Password"
             title="Inpit title"
-            formControlName="password"
+            name="password"
             type="password"
             class="input_field"
             id="passwordProfil"

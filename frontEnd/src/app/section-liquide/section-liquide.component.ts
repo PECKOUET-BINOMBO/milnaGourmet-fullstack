@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage, NgFor, CurrencyPipe } from '@angular/common';
+import {NgFor, CurrencyPipe } from '@angular/common';
 import { ServicePanier } from '../services/service-panier';
 import { FormsModule } from '@angular/forms';
 
@@ -17,7 +17,7 @@ interface Produit {
 @Component({
   selector: 'app-section-liquide',
   standalone: true,
-  imports: [NgOptimizedImage, NgFor, CurrencyPipe, FormsModule],
+  imports: [NgFor, CurrencyPipe, FormsModule],
   templateUrl: './section-liquide.component.html',
   styleUrl: './section-liquide.component.scss'
 })

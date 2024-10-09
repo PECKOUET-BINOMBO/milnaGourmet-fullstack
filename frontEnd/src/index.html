@@ -33,97 +33,12 @@
       // Constantes pour les sélecteurs fréquemment utilisés
       const SELECTORS = {
         scrollUpBtn: "#scrollUpBtn",
-        cartButton: "#cartButton",
-        cartDropdown: "#cartDropdown",
+
       };
 
-      // Fonction pour basculer l'affichage d'un élément
-      function toggleElement(element, show) {
-        if (element) {
-          element.classList.toggle("hidden", !show);
-        }
-      }
-
-      // Configuration du dropdown utilisateur et du modal compte
-      function setupUserInteractions() {
-        const userIcon = document.querySelector(SELECTORS.userIcon);
-        const userDropdown = document.querySelector(SELECTORS.userDropdown);
-        const compteLink = document.querySelector(SELECTORS.compteLink);
-        const modalCompte = document.querySelector(SELECTORS.modalCompte);
-        const closeModalBtn = document.querySelector(SELECTORS.closeModalBtn);
-
-        if (userIcon && userDropdown) {
-          userIcon.addEventListener("click", (event) => {
-            event.stopPropagation();
-            toggleElement(userDropdown, true);
-          });
-
-          document.addEventListener("click", (event) => {
-            if (
-              !userIcon.contains(event.target) &&
-              !userDropdown.contains(event.target)
-            ) {
-              toggleElement(userDropdown, false);
-            }
-          });
-        }
-
-        if (compteLink && modalCompte) {
-          compteLink.addEventListener("click", (event) => {
-            event.preventDefault();
-            toggleElement(modalCompte, true);
-          });
-
-          // Fermer le modal quand on clique sur la croix
-          if (closeModalBtn) {
-            closeModalBtn.addEventListener("click", () => {
-              toggleElement(modalCompte, false);
-            });
-          }
-
-          // Fermer le modal quand on clique en dehors
-          document.addEventListener("click", (event) => {
-            if (modalCompte.classList.contains("hidden")) return;
-            if (
-              !modalCompte.contains(event.target) &&
-              event.target !== compteLink
-            ) {
-              toggleElement(modalCompte, false);
-            }
-          });
-
-          // Empêcher la fermeture du modal quand on clique à l'intérieur
-          modalCompte.addEventListener("click", (event) => {
-            event.stopPropagation();
-          });
-        }
-      }
-
-      // Configuration du dropdown du panier
-      function setupCartDropdown() {
-        const cartButton = document.querySelector(SELECTORS.cartButton);
-        const cartDropdown = document.querySelector(SELECTORS.cartDropdown);
-
-        if (cartButton && cartDropdown) {
-          cartButton.addEventListener("click", () =>
-            toggleElement(cartDropdown, true)
-          );
-
-          document.addEventListener("click", (event) => {
-            if (
-              !cartButton.contains(event.target) &&
-              !cartDropdown.contains(event.target)
-            ) {
-              toggleElement(cartDropdown, false);
-            }
-          });
-        }
-      }
 
       // Fonction d'initialisation principale
       function initializeApp() {
-        setupUserInteractions();
-        setupCartDropdown();
 
         const scrollUpBtn = document.querySelector(SELECTORS.scrollUpBtn);
         if (scrollUpBtn) {

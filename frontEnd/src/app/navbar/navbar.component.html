@@ -3,7 +3,7 @@
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
   >
     <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img ngSrc="images/logo2.png" width="100" height="59.5" alt="My Logo" />
+      <img [src]="logoUrl" width="100" height="59.5" alt="My Logo" />
     </a>
     <div
       class="relative flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
@@ -103,3 +103,7 @@
     </div>
   </div>
 </nav>
+
+<!-- TODO fermer le dropdown au menu même quand on click ailleurs -->
+ <!-- TODO faire la fonction dropdown du panier  -->
+  <!-- TODO quand on supprime dans le panier le dropdown ne dopit pas se fermer, sauf si on click ailleurs -->
