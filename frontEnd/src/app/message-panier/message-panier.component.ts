@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-message-panier',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [],
   templateUrl: './message-panier.component.html',
   styleUrl: './message-panier.component.scss'
 })

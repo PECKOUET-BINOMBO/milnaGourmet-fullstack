@@ -53,43 +53,39 @@
           >
         </li>
         <li>
-          <span
-            (click)="scrollToElement('cremeux')"
+          <a href="#gourments-crémeux" class="cursor-pointer principal block py-2 px-3 md:p-0">Crémeux</a>
+        </li>
+        <li>
+          <a
+            href="#liquide"
             class="cursor-pointer principal block py-2 px-3 md:p-0"
-            >Crémeux</span
+            >Liquides</a
           >
         </li>
         <li>
-          <span
-            (click)="scrollToElement('liquide')"
+          <a
+          href="#creation"
             class="cursor-pointer principal block py-2 px-3 md:p-0"
-            >Liquides</span
+            >Créations</a
           >
         </li>
         <li>
-          <span
-            (click)="scrollToElement('creation')"
+          <a
+            href="#contact"
             class="cursor-pointer principal block py-2 px-3 md:p-0"
-            >Créations</span
-          >
-        </li>
-        <li>
-          <span
-            (click)="scrollToElement('contact')"
-            class="cursor-pointer principal block py-2 px-3 md:p-0"
-            >Contacts</span
+            >Contacts</a
           >
         </li>
 
         <li>
           <div class="relative">
-            <button (click)="toggleDropdown()" class="principal flex items-start">
+            <button (click)="toggleDropdown($event)" class="principal flex items-start">
               <span>
                 Nom
               </span>
               <img class="w-5 h-5 rounded-full" [src]="iconCompte" alt="user photo">
             </button>
-            <div *ngIf="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+            <div #dropdownMenu *ngIf="isDropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
 
                 <a class="cursor-pointer principal block py-2 px-3 hover:bg-gray-100" routerLink="/compte">Mon compte</a>
                 <a class="cursor-pointer principal block py-2 px-3 hover:bg-gray-100" >Se déconnecter</a>
@@ -104,6 +100,3 @@
   </div>
 </nav>
 
-<!-- TODO fermer le dropdown au menu même quand on click ailleurs -->
- <!-- TODO faire la fonction dropdown du panier  -->
-  <!-- TODO quand on supprime dans le panier le dropdown ne dopit pas se fermer, sauf si on click ailleurs -->

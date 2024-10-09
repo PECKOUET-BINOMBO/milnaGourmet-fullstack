@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { ServicePanier, ElementPanier } from '../services/service-panier';
 
 @Component({
@@ -16,10 +15,13 @@ export class PanierComponent implements OnInit {
   nombreTotalProduits: number = 0;
   types: ('cremeux' | 'liquide' | 'creation')[] = ['cremeux', 'liquide', 'creation'];
   panierEstVide: boolean = true;
+  isPanierOpen: boolean = false;
+
+  @ViewChild('panierDropdown') panierDropdown!: ElementRef;
 
   constructor(
     private servicePanier: ServicePanier,
-
+    private eRef: ElementRef
   ) {}
 
   ngOnInit() {
@@ -31,8 +33,22 @@ export class PanierComponent implements OnInit {
     });
   }
 
-  retirerElement(element: ElementPanier) {
+  @HostListener('document:click', ['$event'])
+  clickout(event: MouseEvent) {
+    if (this.isPanierOpen && !this.eRef.nativeElement.contains(event.target)) {
+      this.isPanierOpen = false;
+    }
+  }
+
+  togglePanier(event: Event): void {
+    event.stopPropagation();
+    this.isPanierOpen = !this.isPanierOpen;
+  }
+
+  retirerElement(element: ElementPanier, event: Event) {
+    event.stopPropagation(); // Empêche la propagation du clic
     this.servicePanier.retirerDuPanier(element.id, element.type);
+    // Ne pas fermer le panier ici
   }
 
   augmenterQuantite(element: ElementPanier) {
@@ -60,6 +76,4 @@ export class PanierComponent implements OnInit {
   getElementsParType(type: 'cremeux' | 'liquide' | 'creation'): ElementPanier[] {
     return this.elementsPanier.filter(element => element.type === type);
   }
-
-
 }
