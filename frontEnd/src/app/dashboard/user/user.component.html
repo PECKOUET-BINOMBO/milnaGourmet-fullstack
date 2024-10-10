@@ -1,0 +1,117 @@
+<app-bar></app-bar>
+<!-- TODO
+ - page compte
+ - page modifier
+ - page ajout
+ - inscription
+ - connexion
+ - mots de passe oublié
+ -->
+<div class="body-dash overflow-y-auto overflow-x-hidden">
+  <h1 class="my-3 font-medium text-gray-600 text-2xl">Utilisateurs</h1>
+
+  <div class="mt-5">
+    <button
+      type="button"
+      class="btn add text-white font-medium rounded-lg px-5 py-2.5 me-2 mb-2"
+    >
+      Ajouter
+    </button>
+  </div>
+
+  <div class="relative overflow-x-auto py-3">
+    <table
+      class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border shadow-lg rounded"
+    >
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3">Nom</th>
+          <th scope="col" class="px-6 py-3">E-mail</th>
+          <th scope="col" class="px-6 py-3">N° WhatsApp</th>
+          <th scope="col" class="px-6 py-3">Adresse de livraison</th>
+          <th scope="col" class="px-6 py-3">Rôle</th>
+
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Gloria
+          </th>
+          <td class="px-6 py-4">gloriagmail.com</td>
+          <td class="px-6 py-4">77 299 58 51</td>
+          <td class="px-6 py-4">Kalikak</td>
+          <td class="px-6 py-4">Client</td>
+
+          <td class="px-6 py-4">
+            <a
+              href="#"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
+              >Modifier</a
+            >
+            <a
+              href="#"
+              class="font-medium text-red-600 dark:text-red-500 hover:underline"
+              >Supprimer</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Ines
+          </th>
+          <td class="px-6 py-4">inesgmail.com</td>
+          <td class="px-6 py-4">77 299 58 51</td>
+          <td class="px-6 py-4">Angodjé</td>
+          <td class="px-6 py-4">Client</td>
+
+          <td class="px-6 py-4">
+            <a
+              href="#"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
+              >Modifier</a
+            >
+            <a
+              href="#"
+              class="font-medium text-red-600 dark:text-red-500 hover:underline"
+              >Supprimer</a
+            >
+          </td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            Lorna
+          </th>
+          <td class="px-6 py-4">lornagmail.com</td>
+          <td class="px-6 py-4">77 299 58 51</td>
+          <td class="px-6 py-4">Owendo</td>
+          <td class="px-6 py-4">Administrateur</td>
+
+          <td class="px-6 py-4">
+            <a
+              href="#"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
+              >Modifier</a
+            >
+            <a
+              href="#"
+              class="font-medium text-red-600 dark:text-red-500 hover:underline"
+              >Supprimer</a
+            >
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

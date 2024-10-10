@@ -217,3 +217,18 @@ body::-webkit-scrollbar-thumb {
   background-color: #06c0ca; /* color of the scroll thumb */
   border-radius: 20px;
 }
+
+.body-dash
+{
+  width: 80%;
+  position: absolute;
+    top: 13%;
+    left: 18%;
+}
+.add{
+  background: #06c0ca;
+}
+
+.add:hover{
+  background: #34aeb3;
+}

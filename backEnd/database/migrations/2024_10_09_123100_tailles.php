@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nom', 20);
             $table->integer('nb_fruits');
             $table->integer('nb_sauces');
+            $table->integer('prix');
             $table->timestamps();
         });
     }
