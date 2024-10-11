@@ -1,4 +1,4 @@
-import { NgOptimizedImage, ViewportScroller, CommonModule } from '@angular/common';
+import {ViewportScroller, CommonModule } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { PanierComponent } from "../panier/panier.component";
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
@@ -9,8 +9,7 @@ import { User } from '@angular/fire/auth';
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    NgOptimizedImage,
-    PanierComponent,
+        PanierComponent,
     RouterLink,
     RouterOutlet,
     CommonModule

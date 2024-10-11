@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { BarComponent } from "../bar/bar.component";
 
 @Component({
   selector: 'app-sauce',
   standalone: true,
-  imports: [BarComponent],
+  imports: [],
   templateUrl: './sauce.component.html',
   styleUrl: './sauce.component.scss'
 })

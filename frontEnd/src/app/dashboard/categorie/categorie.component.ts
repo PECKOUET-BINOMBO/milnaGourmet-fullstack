@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { BarComponent } from "../bar/bar.component";
 
 @Component({
   selector: 'app-categorie',
   standalone: true,
-  imports: [BarComponent],
+  imports: [],
   templateUrl: './categorie.component.html',
   styleUrl: './categorie.component.scss'
 })

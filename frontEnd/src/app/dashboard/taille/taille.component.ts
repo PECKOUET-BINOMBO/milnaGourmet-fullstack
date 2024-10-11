@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { BarComponent } from "../bar/bar.component";
 
 @Component({
   selector: 'app-taille',
   standalone: true,
-  imports: [BarComponent],
+  imports: [],
   templateUrl: './taille.component.html',
   styleUrl: './taille.component.scss'
 })

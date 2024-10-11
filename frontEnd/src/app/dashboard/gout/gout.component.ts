@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { BarComponent } from "../bar/bar.component";
 
 @Component({
   selector: 'app-gout',
   standalone: true,
-  imports: [BarComponent],
+  imports: [],
   templateUrl: './gout.component.html',
   styleUrl: './gout.component.scss'
 })
