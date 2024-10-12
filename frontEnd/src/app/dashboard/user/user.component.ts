@@ -10,9 +10,14 @@ import { CommonModule } from '@angular/common';
 })
 export class UserComponent {
   logoUrl = '../../images/logo2.png';
-  isFormVisible = false;
+  isFormAddVisible = false;
+  isFormUpdateVisible = false;
 
-  toggleForm() {
-    this.isFormVisible = !this.isFormVisible;
+  toggleFormAdd() {
+    this.isFormAddVisible = !this.isFormAddVisible;
+  }
+
+  toggleFormUpdate() {
+    this.isFormUpdateVisible = !this.isFormUpdateVisible;
   }
 }
