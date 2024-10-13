@@ -3,14 +3,128 @@
 
   <div class="mt-5">
     <button
-      type="button"
-      class="btn add text-white font-medium rounded-lg px-5 py-2.5 me-2 mb-2"
+      (click)="toggleFormAdd()"
+      class="add text-white font-bold py-2 px-4 rounded"
     >
-      Ajouter
+      {{ isFormAddVisible ? "Annuler" : "Ajouter" }}
     </button>
   </div>
 
   <div class="relative overflow-x-auto py-3">
+    <form
+      *ngIf="isFormAddVisible"
+      class="border shadow-lg bg-white rounded px-8 pt-6 pb-8 mb-4"
+    >
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="nom">
+          Nom
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="nom"
+          type="text"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+          Prix
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="prix"
+          type="text"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+          Nombre de fruits
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="fruit"
+          type="number"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="fruit">
+          Nombre de sauces
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="prix"
+          type="number"
+        />
+      </div>
+
+      <div class="flex bg-white py-2">
+        <div class="flex items-center justify-between me-2">
+          <button class="add text-white font-bold py-2 px-4 rounded">
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <form
+      *ngIf="isFormUpdateVisible"
+      class="border shadow-lg bg-white rounded px-8 pt-6 pb-8 mb-4"
+    >
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="nom">
+          Nom
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="nom"
+          type="text"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+          Prix
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="prix"
+          type="text"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+          Nombre de fruits
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="fruit"
+          type="number"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="fruit">
+          Nombre de sauces
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="prix"
+          type="number"
+        />
+      </div>
+
+      <div class="flex bg-white py-2">
+        <div class="flex items-center justify-between me-2">
+          <button class="add text-white font-bold py-2 px-4 rounded">
+            Modifier
+          </button>
+        </div>
+
+        <button
+          (click)="toggleFormUpdate()"
+          class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Annuler
+        </button>
+      </div>
+    </form>
     <table
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border shadow-lg rounded"
     >
@@ -32,19 +146,17 @@
             Moyen
           </th>
 
-          <td class="status px-6 py-4">1 fruit</td>
-          <td class="status px-6 py-4">1 sauce</td>
+          <td class="status px-6 py-4">1</td>
+          <td class="status px-6 py-4">1</td>
           <td class="status px-6 py-4">2500</td>
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -56,19 +168,17 @@
           Maxi
         </th>
 
-        <td class="status px-6 py-4">2 fruits</td>
-        <td class="status px-6 py-4">2 sauces avec sucre</td>
+        <td class="status px-6 py-4">2</td>
+        <td class="status px-6 py-4">2</td>
         <td class="status px-6 py-4">3500</td>
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>

@@ -1,16 +1,150 @@
 <div class="body-dash overflow-y-auto overflow-x-hidden">
-  <h1 class="my-3 font-medium text-gray-600 text-2xl">Fruits</h1>
+  <h1 class="my-3 font-medium text-gray-600 text-2xl">Goûts</h1>
 
   <div class="mt-5">
     <button
-      type="button"
-      class="btn add text-white font-medium rounded-lg px-5 py-2.5 me-2 mb-2"
-    >
-      Ajouter
-    </button>
+    (click)="toggleFormAdd()"
+    class="add text-white font-bold py-2 px-4 rounded"
+  >
+    {{ isFormAddVisible ? "Annuler" : "Ajouter" }}
+  </button>
   </div>
 
   <div class="relative overflow-x-auto py-3">
+    <form *ngIf="isFormAddVisible" class="border shadow-lg bg-white rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="nom"
+        >
+          Nom
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="nom"
+          type="text"
+          placeholder="Nom du goût"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+         Prix
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="prix"
+          type="text"
+          placeholder="Prix"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categorie">
+         Catégorie
+        </label>
+
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" id="">
+          <option value="">Crémeux</option>
+          <option value="">Liquide</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categorie">
+         Statut
+        </label>
+
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" id="">
+          <option value="">Disponible</option>
+          <option value="">Bientôt disponible</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categorie">
+         Description
+        </label>
+
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Description ici" name="" id=""></textarea>
+      </div>
+      <div class="flex bg-white pt-6 pb-8 mb-4">
+        <div class="flex items-center justify-between me-2">
+          <button
+
+            class="add text-white font-bold py-2 px-4 rounded"
+          >
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </form>
+    <form *ngIf="isFormUpdateVisible" class="border shadow-lg bg-white rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="nom"
+        >
+          Nom
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="nom"
+          type="text"
+          placeholder="Nom du goût"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="prix">
+         Prix
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="prix"
+          type="text"
+          placeholder="Prix"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categorie">
+         Catégorie
+        </label>
+
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" id="">
+          <option value="">Crémeux</option>
+          <option value="">Liquide</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categorie">
+         Statut
+        </label>
+
+        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" id="">
+          <option value="">Disponible</option>
+          <option value="">Bientôt disponible</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="categorie">
+         Description
+        </label>
+
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Description ici" name="" id=""></textarea>
+      </div>
+      <div class="flex bg-white py-2">
+        <div class="flex items-center justify-between me-2">
+          <button class="add text-white font-bold py-2 px-4 rounded">
+            Modifier
+          </button>
+        </div>
+
+        <button
+          (click)="toggleFormUpdate()"
+          class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Annuler
+        </button>
+      </div>
+    </form>
     <table
       class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border shadow-lg rounded"
     >
@@ -38,15 +172,13 @@
           <td class="status px-6 py-4">600</td>
           <td class="status px-6 py-4">Disponible</td>
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -63,15 +195,13 @@
         <td class="status px-6 py-4">600</td>
         <td class="status px-6 py-4">Disponible</td>
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -90,15 +220,13 @@
           <td class="status px-6 py-4">Disponible</td>
 
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -116,15 +244,13 @@
         <td class="status px-6 py-4">Disponible</td>
 
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -142,15 +268,13 @@
         <td class="status px-6 py-4">Disponible</td>
 
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -169,15 +293,13 @@
           <td class="status px-6 py-4">Disponible</td>
 
           <td class="px-6 py-4">
-            <a
-              href="#"
+            <button (click)="toggleFormUpdate()"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2"
-              >Modifier</a
+              >Modifier</button
             >
-            <a
-              href="#"
+            <button
               class="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >Supprimer</a
+              >Supprimer</button
             >
           </td>
         </tr>
@@ -197,8 +319,8 @@
 
 
           <td class="px-6 py-4">
-              <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2">Modifier</a>
-              <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Supprimer</a>
+              <button (click)="toggleFormUpdate()" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2">Modifier</button>
+              <button class="font-medium text-red-600 dark:text-red-500 hover:underline">Supprimer</button>
           </td>
       </tr>
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -217,8 +339,8 @@
 
 
         <td class="px-6 py-4">
-            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2">Modifier</a>
-            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Supprimer</a>
+            <button (click)="toggleFormUpdate()" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-2">Modifier</button>
+            <button class="font-medium text-red-600 dark:text-red-500 hover:underline">Supprimer</button>
         </td>
     </tr>
       </tbody>
